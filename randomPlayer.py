@@ -1,9 +1,15 @@
-from player import Player
+import random
 import numpy as np
+from player import Player
 
 class RandomPlayer(Player):
+    def __init__(self):
+        super().__init__()
     def move(self,board):
-        return random.choice(np.nonzero(board == 0)[0])
+        choices = np.nonzero(board == 0)
+        numChoices = len(choices[0])
+        randIndex = random.randint(0,numChoices - 1)
+        return choices[0][randIndex], choices[1][randIndex]
 
     def onWin(self):
         self.num_wins+=1

@@ -73,5 +73,4 @@ class State:
                 return -1000
             elif ally == 3:
                 return 1000
-        print(x2,x1,o2,o1)
         return (3 * x2 + x1) - (3 * o2 + o1) 
