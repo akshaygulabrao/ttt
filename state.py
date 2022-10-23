@@ -58,9 +58,9 @@ class State:
         # northwest-diag
         diags = [np.diag(board),np.diag(np.fliplr(board))]
         for diag in diags:
-            blanks = np.count_nonzero(row == 0)
-            enemy = np.count_nonzero(row == -1)
-            ally = np.count_nonzero(row == 1)
+            blanks = np.count_nonzero(diag == 0)
+            enemy = np.count_nonzero(diag == -1)
+            ally = np.count_nonzero(diag == 1)
             if blanks == 2 and enemy == 1:
                 o1 +=1
             elif blanks == 2 and ally == 1:
