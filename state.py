@@ -2,11 +2,28 @@ import numpy as np
 
 class State:
     def __init__(self,board):
-        self.board = board
+        #print("state created")
+        self.board = board.copy()
         self.playerID = self.evalID()
         self.eval = self.evalBoard()
-        self.children = None
+        self.children = []
+        #print("state exited")
 
+    def generateChildren(self):
+        ans = []
+        board = self.board
+        playerID = self.evalID()
+        choices = np.nonzero(board == 0)
+        tempBoard = board.copy() 
+        numChoices = len(choices[0])
+        for i in range(numChoices):
+            tempBoard = board.copy()
+            tempBoard[choices[0][i], choices[1][i]] = playerID
+            ans.append(State(tempBoard))
+        #[print(i.board) for i in ans]
+        self.children = ans
+            
+        
     def evalID(self):
         board = self.board
         if np.count_nonzero(board == 1) > np.count_nonzero(board == -1):

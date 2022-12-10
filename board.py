@@ -34,21 +34,25 @@ class Board:
             board[move_fn[playerID](board)] = playerID 
             playerID*=-1
             gameState = Board.winCheck(board)
+            # if -1 == playerID:
+            #     print('Random Player')
+            # else: print('AlphaBeta')
+            # print(board)
         return gameState
 
     def playGames(self):
         first_move = 1
         for i in range(self.num_games):
-            result = self.playGame(first_move)
-            if result == 0:
+            print(i)
+            gameState = self.playGame(first_move)
+            if gameState == 0:
                 self.player1.onDraw()
                 self.player2.onDraw()
-            elif result == 1:
+            elif gameState == 1:
                 self.player1.onWin()
                 self.player2.onLoss()
-            else:
-                self.player1.onLoss()
+            elif gameState == -1:
                 self.player2.onWin()
-            first_move *=-1            
+                self.player1.onLoss()
 
 
