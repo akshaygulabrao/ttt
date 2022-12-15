@@ -4,12 +4,12 @@ import copy
 from player import Player
 from state import State
 
-class alphaBetaPlayer(Player):
+class minimaxPlayer(Player):
     def __init__(self):
         super().__init__()
 
     def move(self,board):
-        a,b =  self.minimax(board,2,alphaBetaPlayer.evalID(board))
+        a,b =  self.minimax(board,2,minimaxPlayer.evalID(board))
         if board[b] != 0:
             choices = np.nonzero(board == 0)
             numChoices = len(choices[0])
@@ -18,7 +18,7 @@ class alphaBetaPlayer(Player):
         else: return b
     
     def minimax(self,board,depth,playerID):
-        result = alphaBetaPlayer.winCheck(board)
+        result = minimaxPlayer.winCheck(board)
         if result is not None:
             if result == -1:
                 return -1000,None

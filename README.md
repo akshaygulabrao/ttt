@@ -1,4 +1,2 @@
-# Tic Tac Toe
-1. Implement minimax search in Tic Tac Toe
-2. Implement Q-table in Tic Tac Toe
-
+# Tic Tac Toe Minimax Implementation
+Please refer to **minimaxPlayer.py** implementation for minimax search. I am extremely happy because this is the first project that I have completed and not given up on. Funnily enough, I thought that it would take 1 night to finish implementing the minimax, but ended up taking 3 months (with lost motivation in between). I am extremely proud of myself for finishing this project.
