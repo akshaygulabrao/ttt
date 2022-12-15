@@ -25,7 +25,7 @@ class Board:
         return None 
 
 
-    def playGame(self,first_move = 1):
+    def playGame(self,first_move = -1):
         move_fn = [None,self.player1.move,self.player2.move]
         playerID = first_move
         board = np.zeros((3,3))
@@ -34,14 +34,10 @@ class Board:
             board[move_fn[playerID](board)] = playerID 
             playerID*=-1
             gameState = Board.winCheck(board)
-            # if -1 == playerID:
-            #     print('Random Player')
-            # else: print('AlphaBeta')
-            # print(board)
         return gameState
 
     def playGames(self):
-        first_move = 1
+        first_move = -1
         for i in range(self.num_games):
             print(i)
             gameState = self.playGame(first_move)

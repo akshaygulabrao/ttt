@@ -7,7 +7,6 @@ class State:
         self.playerID = self.evalID()
         self.eval = self.evalBoard()
         self.children = []
-        #print("state exited")
 
     def generateChildren(self):
         ans = []
@@ -20,7 +19,6 @@ class State:
             tempBoard = board.copy()
             tempBoard[choices[0][i], choices[1][i]] = playerID
             ans.append(State(tempBoard))
-        #[print(i.board) for i in ans]
         self.children = ans
             
         
@@ -33,7 +31,8 @@ class State:
 
     def evalBoard(self):
         board = self.board 
-        playerID = self.playerID 
+        playerID = self.playerID
+        ans = -50 if playerID != self.evalID() else 0
         x2 = 0
         x1 = 0
         o2 = 0
@@ -90,4 +89,5 @@ class State:
                 return -1000
             elif ally == 3:
                 return 1000
-        return (3 * x2 + x1) - (3 * o2 + o1) 
+        ans+= (3 * x2 + x1) - (3 * o2 + o1)
+        return ans
